@@ -40,7 +40,15 @@ namespace Sapper.Controllers
             currentPictureToSet = 0;
             previousPressedButtonLocation = new Point(0, 0);
             isFirstStep = true;
-            spriteSet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\tiles.png"));
+
+            if (File.Exists(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\tiles.png")))
+            {
+                spriteSet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\tiles.png"));
+            }
+            else
+            {
+                spriteSet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).FullName.ToString(), "Sprites\\tiles.png"));
+            }
                                                                                                                                            
             InitMap();
             InitButtons(current);   
